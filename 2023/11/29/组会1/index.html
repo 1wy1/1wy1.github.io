@@ -1,0 +1,261 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"><title>组会1 | wy</title><meta name="author" content="小巷子"><meta name="copyright" content="小巷子"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="1操作系统：负责管理计算机中各种软硬件资源并控制各类软件运行（就是介于硬件和应用软件系统之间的软件，是人与计算机通信的桥梁）  组成部分：内核、驱动程序、接口库、外围 常见操作系统 ：   操作系统（嵌入式）通常分为实时操作系统和非实时操作系统。 常见的实时系统有：ThreadX、FreeRTOS、ucOS;常见的非实时系统有：windows、linux、Android。 两类操作系统的主要区别在">
+<meta property="og:type" content="article">
+<meta property="og:title" content="组会1">
+<meta property="og:url" content="https://1wy1.github.io/2023/11/29/%E7%BB%84%E4%BC%9A1/index.html">
+<meta property="og:site_name" content="wy">
+<meta property="og:description" content="1操作系统：负责管理计算机中各种软硬件资源并控制各类软件运行（就是介于硬件和应用软件系统之间的软件，是人与计算机通信的桥梁）  组成部分：内核、驱动程序、接口库、外围 常见操作系统 ：   操作系统（嵌入式）通常分为实时操作系统和非实时操作系统。 常见的实时系统有：ThreadX、FreeRTOS、ucOS;常见的非实时系统有：windows、linux、Android。 两类操作系统的主要区别在">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://1wy1.github.io/img/huoying.jpg">
+<meta property="article:published_time" content="2023-11-29T01:23:49.000Z">
+<meta property="article:modified_time" content="2023-11-29T02:08:12.745Z">
+<meta property="article:author" content="小巷子">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://1wy1.github.io/img/huoying.jpg"><link rel="shortcut icon" href="/img/tx.jpg"><link rel="canonical" href="https://1wy1.github.io/2023/11/29/%E7%BB%84%E4%BC%9A1/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":300},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  }
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '组会1',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-11-29 10:08:12'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="Blog/themes/butterfly/source/css/wy.css"><meta name="generator" content="Hexo 6.3.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/huoying.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">7</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">2</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首頁</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 時間軸</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 標籤</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 清單</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音樂</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 電影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友鏈</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/bj.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="wy"><span class="site-name">wy</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首頁</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 時間軸</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 標籤</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 清單</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音樂</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 電影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友鏈</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">组会1</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-11-29T01:23:49.000Z" title="发表于 2023-11-29 09:23:49">2023-11-29</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-11-29T02:08:12.745Z" title="更新于 2023-11-29 10:08:12">2023-11-29</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">3.1k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>10分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="组会1"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="1"><a href="#1" class="headerlink" title="1"></a><strong>1</strong></h1><p>操作系统：负责管理计算机中各种软硬件资源并控制各类软件运行（就是介于硬件和应用软件系统之间的软件，是人与计算机通信的桥梁）</p>
+<p><img src="/2023/11/29/%E7%BB%84%E4%BC%9A1/image-20230323141736078.png" alt="image-20230323141736078"></p>
+<p>组成部分：内核、驱动程序、接口库、外围</p>
+<p>常见操作系统 ：  </p>
+<p>操作系统（嵌入式）通常分为实时操作系统和非实时操作系统。</p>
+<p>常见的实时系统有：ThreadX、FreeRTOS、ucOS;常见的非实时系统有：windows、linux、Android。</p>
+<p>两类操作系统的主要区别在于任务调度处理方式不同，常用的任务调度方式有两种：基于任务优先级的任务调度方式和基于时间片的任务调度方式。</p>
+<p>Stm32为什么不能移植Linux操作系统  （freertos  linux）</p>
+<p>什么芯片可以移植linux系统     MMU 内存管理单元</p>
+<p>Cortex-M下的处理器没有内存管理单元MMU</p>
+<p>Linux操作系统对MMU（内存管理单元）有极强的依赖</p>
+<p><em><strong>*MMU内存管理单元  物理地址，虚拟地址*</strong></em></p>
+<p>Linux 内核启动的时候会初始化 MMU，设置好内存映射，设置好以后 CPU 访问的都是虚拟地址。做Linux驱动的时候，我们不能直接操作寄存器，要用映射函数之后才能操作</p>
+<p>我们能直接编译Linux源码吗  像freertos一样</p>
+<h1 id="2"><a href="#2" class="headerlink" title="2"></a><strong>2</strong></h1><p><strong>Linux系统  bootloader、linux kernel（linux内核）、rootfile（根文件系统）</strong></p>
+<p>Linux 的移植主要包括3部分：</p>
+<p><img src="/2023/11/29/%E7%BB%84%E4%BC%9A1/image-20231129092601251.png" alt="image-20231129092601251"></p>
+<p>移植「bootloader 代码」， Linux 系统要启动就必须需要一个 bootloader 程序，也就说芯片上电以后先运行一段bootloader程序。 这段bootloader程序会先初始化DDR等外设， 然后将Linux内核从flash(NAND，NOR FLASH，SD，MMC 等)拷贝到 DDR 中，最后启动 Linux 内核。 bootloader 有很多，常用的就是 U-Boot。</p>
+<p>移植「Linux 内核」，Linux内核由一系列程序组成，包括负责响应中断的中断服务程序、负责管理多个进程从而分享处理器时间的调度程序、负责管理地址空间的内存管理程序、网络、进程间通信的系统服务程序等。内核负责管理系统的硬件设备。</p>
+<p>移植「根文件系统(rootfs)」，Linux 中的根文件系统更像是一个文件夹或者叫做目录，在这个目录里面会有很多的子目录。根目录下和子目录中会有很多的文件，这些文件是 Linux 运行所必须的，比如库、常用的软件和命令、设备文件、配置文件等等。根文件系统里面包含了一些最常用的命令和文件。</p>
+<p>「U-Boot、Linux kernel和rootfs」 这三者一起构成了一个完整的Linux系统，一个可以正常使用、功能完善的Linux系统。</p>
+<p> <img src="/2023/11/29/%E7%BB%84%E4%BC%9A1/image-20231129093050994.png" alt="image-20231129093050994"></p>
+<p>Linux内核主要提供进程管理，内存管理，文件系统，设备驱动，网络协议等一些系统最基本的功能。原生的Linux内核没有界面</p>
+<p>我们可以比较一下Linux内核源码和根文件系统的内存大小</p>
+<p>移植freertos 直接编译 我们能直接下载Linux源码然后编译一下吗</p>
+<h1 id="3"><a href="#3" class="headerlink" title="3"></a>3</h1><p>U-Boot移植</p>
+<p>U-Boot 是一个主要用于嵌入式系统的引导加载程序，可以支持多种不同的计算机系统结构，包括PPC、ARM、AVR32、MIPS、x86、68k、Nios与MicroBlaze。这也是一套在GNU通用公共许可证之下发布的自由软件。</p>
+<p>① 开放源码；</p>
+<p>② 支持多种嵌入式操作系统内核，如Linux、NetBSD, VxWorks, QNX, RTEMS, ARTOS, LynxOS, android；</p>
+<p>③ 支持多个处理器系列，如PowerPC、ARM、x86、MIPS；</p>
+<p>有很多现成的 bootloader 软件可以使用，比如 U-Boot、vivi、RedBoot 等</p>
+<p>uboot 是一个遵循 GPL 协议的开源软件， 是一个裸机（无操作系统）代码，可以看作是一个裸机综合例程。这段bootloader程序会先初始化DDR等外设，然后将Linux内核从flash(NAND，NOR FLASH，SD，MMC 等)拷贝到 DDR 中，最后启动 Linux 内核。当然了，bootloader 的实际工作要复杂的多，但是它最主要的工作就是启动 Linux 内核，为了完成一些任务，uboot中必须初始化一部分硬件。比如uboot要在刷机时LCD上显示进度条就必须能驱动LCD，比如uboot能够通过串口提供操作界面就必须驱动串口，比如uboot要实现网络功能就必须驱动网卡芯片。</p>
+<p><em><strong>*uboot 官方的 uboot 代码*</strong></em> </p>
+<p>uboot官方支持的硬件型号大而全，它主要的任务就是适应性强和泛化能力强，因此，官方的uboot，功能都比较抽象，尽可能不做具体的特定硬件相关的功能。而实际的硬件产品，又需要特定硬件的驱动与功能。</p>
+<p><em><strong>*半导体厂商的 uboot 代码*</strong></em>  <em><strong>*√√√*</strong></em></p>
+<p><em><strong>*开发板厂商的 uboot 代码*</strong></em></p>
+<p> <img src="/2023/11/29/%E7%BB%84%E4%BC%9A1/image-20231129092920889.png" alt="image-20231129092920889"></p>
+<p>在uboot源码里Makefile非常重要，Makefile里代码量非常大，分析可以了解uboot的启动流程。比如我们采用那种编译方式，导出那些变量给子Makefile，引用其他一些文件，匹配我们设置目标架构、交叉编译器和配置文件，生成一些文件。</p>
+<p><em><strong>*Makefile 文件描述了整个工程的编译、连接等规则。其中包括：工程中的哪些源文件需要编译以及如何编译、需要创建哪些库文件以及如何创建这些库文件、如何最后产生我们想要的可执行文件。尽管看起来可能是很复杂的事情，但是为工程编写Makefile 的好处是能够使用一行命令来完成“自动化编译”，一旦提供一个（通常对于一个工程来说会是多个）正确的 Makefile。编译整个工程你所要做的事就是在shell 提示符下输入make命令。整个工程完全自动编译，极大提高了效率。*</strong></em></p>
+<p><em><strong>*Makefile基本规则*</strong></em></p>
+<p>还有readme</p>
+<p>编 译 uboot 的 时 候 需 要 设 置 目 标 板 架 构 和 交 叉 编 译 器</p>
+<p>make ARCH&#x3D;arm CROSS_COMPILE&#x3D;arm-linux-gnueabihf- distclean</p>
+<p>make ARCH&#x3D;arm CROSS_COMPILE&#x3D;arm-linux-gnueabihf- </p>
+<p>mx6ull_14x14_ddr512_emmc_defconfig</p>
+<p>make V&#x3D;1 ARCH&#x3D;arm CROSS_COMPILE&#x3D;arm-linux-gnueabihf- -j12</p>
+<p><em><strong>*交叉编译器  一个在 X86 架构上可以编译 ARM 架构代码的 gcc编译器，即「交叉编译器」。*</strong></em></p>
+<p>ARCH，也就是指定架构，这里肯定是 arm； CROSS_COMPILE 用于指定编译器，只需要指明编译器前缀就行了，比如 arm-linux-gnueabihf-gcc 编译器的前缀就是“arm-linux-gnueabihf-”；最后一个参数 distclean 就是清除工程。</p>
+<p> mx6ull_14x14_ddr512_emmc_defconfig用于配置 uboot。前面说了 uboot 是 bootloader 的一种，可以用来引导Linux，但是 uboot 除了引导 Linux 以外还可以引导其它的系统，而且 uboot 还支持其它的架构和外设，比如 USB、网络、SD 卡等。这些都是可以配置的，需要什么功能就使能什么功能。所以在编译 uboot 之前，一定要根据自己的需求配置 uboot。</p>
+<p>其中 V&#x3D;1 用于设置编译过程的信息输出级别；-j 用于设置主机使用多少线程编译uboot，最好设置成我们虚拟机所设置的核心数，如果在 VMware 里面给虚拟就分配了 4 个核，那么使用-j4 是最合适的，这样 4 个核都会一起编译。</p>
+<p>下载到开发板测试</p>
+<p><img src="/2023/11/29/%E7%BB%84%E4%BC%9A1/image-20231129092808095.png" alt="image-20231129092808095"></p>
+<p>命令：setenv 和 saveenv  Ping  nfs  tftp  </p>
+<p>在操作系统中一般被指定为操作系统运行环境的一些参数，如果没有配置相应的uboot环境变量，就会去执行代码中设定的相应变量，如果相应的uboot环境变量不为空就是优先去执行uboot环境变量对应的值（命令，指定的一些参数）</p>
+<p>setenv bootargs ‘console&#x3D;ttymxc0,115200 root&#x3D;&#x2F;dev&#x2F;mmcblk1p2 rootwait rw’</p>
+<p>Saveenv </p>
+<p>1 、 console</p>
+<p>用来设置linux终端，&#x2F;dev&#x2F;ttymxc0，后面的115200是串口波特率</p>
+<p>2，root</p>
+<p>设置跟文件系统的位置root&#x3D;&#x2F;dev&#x2F;mmcblk1p2 用于指明根文件系统存放在mmcblk1设备的分区 2中，&#x2F;dev&#x2F;mmcblk1在本系统中 表示 EMMC</p>
+<p>root 后面的rootwait rwrootwait 表示等待 mmc 设备初始化完成以后再挂载，否则会出错。rw表示跟文件系统是可以读写的。不加则只能进行读操作。</p>
+<p>mmc dev 1 &#x2F;&#x2F;切换到 EMMC</p>
+<p>fatload 命令用于将指定的文件读取到 DRAM 中</p>
+<p>我们将 EMMC 分区 1 中的 zImage 文件读取到 DRAM 中的0X80800000 地址处</p>
+<p>————————————————</p>
+<p><em><strong>*bootcmd*</strong></em> 保存着 uboot 默认命令，uboot 倒计时结束以后就会执行 bootcmd 中的命令。这些命令一般都是用来启动 Linux 内核的，就是读zimag和设备树，可以在 uboot 启动以后进入命令行设置 bootcmd 环境变量的值。如果 EMMC 或者 NAND 中没有保存 bootcmd 的值，那么 uboot 就会使用默认的值，板子第一次运行 uboot 的时候都会使用默认值来设置 bootcmd 环境变量。</p>
+<p><em><strong>*bootargs*</strong></em> 保存着 uboot 传递给 Linux 内核的参数，根据这个Linux会读取到rootfs</p>
+<p><img src="/2023/11/29/%E7%BB%84%E4%BC%9A1/image-20231129092836263.png" alt="img"> </p>
+<p> <img src="/2023/11/29/%E7%BB%84%E4%BC%9A1/image-20231129092847648.png" alt="image-20231129092847648"></p>
+<p>uboot 的移植并不是说我们完完全全的从零开始将 uboot 移植到我们现在所使用的开发板。NXP 官方 uboot 中默认都是 NXP 自己的开发板，虽说我们可以直接在官方的开发板上直接修改，使 uboot 可以完整的运行在我们的板子上。或者开发平台上。</p>
+<p>先在 configs 目录下创建默认配置文件，复制 mx6ull_14x14_evk_emmc_defconfig，然后重命名为 mx6ull_alientek_emmc_defconfig</p>
+<p>CONFIG_SYS_EXTRA_OPTIONS&#x3D;”IMX_CONFIG&#x3D;board&#x2F;freescale&#x2F;mx6ull_alientek_</p>
+<p>emmc&#x2F;imximage.cfg,MX6ULL_EVK_EMMC_REWORK”</p>
+<p>CONFIG_ARM&#x3D;y </p>
+<p>CONFIG_ARCH_MX6&#x3D;y</p>
+<p>CONFIG_TARGET_MX6ULL_ALIENTEK_EMMC&#x3D;y </p>
+<p>CONFIG_CMD_GPIO&#x3D;y</p>
+<p>在 目 录 include&#x2F;configs 下 添 加 I.MX6ULL-ALPHA 开 发 板 对 应 的 头 文 件 ， 复 制include&#x2F;configs&#x2F;mx6ullevk.h，并重命名为 mx6ull_alientek_emmc.h，</p>
+<p>在 board&#x2F;freescale 目录下，在这个目录下有个名为 mx6ullevk 的文件夹，复制 mx6ullevk，将其重命名为 mx6ull_alientek_emmc</p>
+<p>1、修改 mx6ull_alientek_emmc 目录下的 Makefile 文件</p>
+<p>2，修改 mx6ull_alientek_emmc 目录下的 imximage.cfg 文件</p>
+<p>3，修改 mx6ull_alientek_emmc 目录下的 Kconfig 文件</p>
+<p>4、修改 mx6ull_alientek_emmc 目录下的 MAINTAINERS 文件</p>
+<p>如果使用其他分辨率的 LCD 就需要修改 LCD 驱动，</p>
+<p>因为正点原子开发板的网络芯片复位引脚和 NXP 官方开发板不一样，因此需要修改驱动。</p>
+<p>mx6ull_alientek_emmc.h 和 mx6ull_alientek_emmc.c 这两个文件。</p>
+<p>一般修改 LCD 驱动重点注意以下几点：</p>
+<p>①、LCD 所使用的 GPIO，查看 uboot 中 LCD 的 IO 配置是否正确。</p>
+<p>②、LCD 背光引脚 GPIO 的配置。</p>
+<p>③、LCD 配置参数是否正确。</p>
+<p>uboot 移植到此结束，简单总结一下 uboot 移植的过程：</p>
+<p>①不管是购买的开发板还是自己做的开发板，基本都是参考半导体厂商的 demo 板，而半导体厂商会在他们自己的开发板上移植好 uboot、linux kernel 和 rootfs 等，最终制作好 BSP包提供给用户。我们可以在官方提供的 BSP 包的基础上添加我们的板子，也就是俗称的移植。</p>
+<p>②我们购买的开发板或者自己做的板子一般都不会原封不动的照抄半导体厂商的 demo板，都会根据实际的情况来做修改，既然有修改就必然涉及到 uboot 下驱动的移植。</p>
+<p>③一般 uboot 中需要解决串口、NAND、EMMC 或 SD 卡、网络和 LCD 驱动，因为 uboot的主要目的就是启动 Linux 内核，所以不需要考虑太多的外设驱动。</p>
+<p>④、在 uboot 中添加自己的板子信息，根据自己板子的实际情况来修改 uboot 中的驱动。uboot 的启动流程，加上 uboot 顶层 Makefile 的分析，还是不少的！这也仅仅是 uboot 启动流程分析，里面的东西很多也比较复杂，我也一脸懵逼，只简单的介绍一下，大概有什么东西，移植的一个简单过程。</p>
+<p>后面是Linux操作系统和跟文件系统的移植:</p>
+<p>Linux操作系统的移植和uboot类似：配置，编译，移植；当然我们也需要适配开发板；</p>
+<p>跟文件系统主要用buildroot构建好就可以能正常使用，配置文件按需修改。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://1wy1.github.io">小巷子</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://1wy1.github.io/2023/11/29/%E7%BB%84%E4%BC%9A1/">https://1wy1.github.io/2023/11/29/%E7%BB%84%E4%BC%9A1/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://1wy1.github.io" target="_blank">wy</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="/img/huoying.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2023/11/28/%E6%99%BA%E8%83%BD%E5%AE%B6%E5%B1%85%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93/" title="智能家居项目总结"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">智能家居项目总结</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/huoying.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">小巷子</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">7</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">2</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/1wy1/1wy1.github.io"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">QQ：491000643</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1"><span class="toc-text">1</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2"><span class="toc-text">2</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3"><span class="toc-text">3</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/11/29/%E7%BB%84%E4%BC%9A1/" title="组会1">组会1</a><time datetime="2023-11-29T01:23:49.000Z" title="发表于 2023-11-29 09:23:49">2023-11-29</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/11/28/%E6%99%BA%E8%83%BD%E5%AE%B6%E5%B1%85%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93/" title="智能家居项目总结">智能家居项目总结</a><time datetime="2023-11-28T07:23:53.000Z" title="发表于 2023-11-28 15:23:53">2023-11-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/11/26/%E6%99%BA%E8%83%BD%E5%AE%B6%E5%B1%85/" title="智能家居"><img src="http://p8.qhimg.com/bdm/320_197_0/t01a31872c20caaeb27.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="智能家居"/></a><div class="content"><a class="title" href="/2023/11/26/%E6%99%BA%E8%83%BD%E5%AE%B6%E5%B1%85/" title="智能家居">智能家居</a><time datetime="2023-11-25T16:00:00.000Z" title="发表于 2023-11-26 00:00:00">2023-11-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/05/30/QT/" title="QT--简易音乐播放器"><img src="http://browser9.qhimg.com/bdm/320_197_0/t01dfe78c9e02a650c3.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="QT--简易音乐播放器"/></a><div class="content"><a class="title" href="/2023/05/30/QT/" title="QT--简易音乐播放器">QT--简易音乐播放器</a><time datetime="2023-05-30T04:45:42.000Z" title="发表于 2023-05-30 12:45:42">2023-05-30</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/05/27/linux%E7%9B%B8%E5%85%B3%E5%90%8D%E8%AF%8D%E8%A7%A3%E9%87%8A/" title="linux相关名词解释">linux相关名词解释</a><time datetime="2023-05-27T03:17:53.000Z" title="发表于 2023-05-27 11:17:53">2023-05-27</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2022 - 2023 By 小巷子</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"></div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/fireworks.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-nest.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
