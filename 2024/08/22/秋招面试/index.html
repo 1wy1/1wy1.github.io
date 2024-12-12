@@ -1,0 +1,257 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"><title>wy | wy</title><meta name="author" content="小巷子"><meta name="copyright" content="小巷子"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="智能家居MCU：stm32f103c8t6项目在keil上进行移植创建开发 项目包含对下位机（MCU对外设数据读取与控制）和上位机（包含服务平台和APP端）的设计。下位机选取STM32作为MCU，外设有LED灯和温度传感器，OLED屏。上位机则选用中国移动旗下的OneNet平台作为服务器，考虑到未来物联网的开发大多数是基于手机APP的。使用QT利用socket套接字绑定云平台IP和端口号制作。 下">
+<meta property="og:type" content="article">
+<meta property="og:title" content="wy">
+<meta property="og:url" content="https://1wy1.github.io/2024/08/22/%E7%A7%8B%E6%8B%9B%E9%9D%A2%E8%AF%95/index.html">
+<meta property="og:site_name" content="wy">
+<meta property="og:description" content="智能家居MCU：stm32f103c8t6项目在keil上进行移植创建开发 项目包含对下位机（MCU对外设数据读取与控制）和上位机（包含服务平台和APP端）的设计。下位机选取STM32作为MCU，外设有LED灯和温度传感器，OLED屏。上位机则选用中国移动旗下的OneNet平台作为服务器，考虑到未来物联网的开发大多数是基于手机APP的。使用QT利用socket套接字绑定云平台IP和端口号制作。 下">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://1wy1.github.io/img/huoying.jpg">
+<meta property="article:published_time" content="2024-08-22T05:39:51.500Z">
+<meta property="article:modified_time" content="2024-10-25T11:08:11.495Z">
+<meta property="article:author" content="小巷子">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://1wy1.github.io/img/huoying.jpg"><link rel="shortcut icon" href="/img/tx.jpg"><link rel="canonical" href="https://1wy1.github.io/2024/08/22/%E7%A7%8B%E6%8B%9B%E9%9D%A2%E8%AF%95/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":"flase","highlightHeightLimit":50},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  }
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'wy',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: flase,
+  isToc: true,
+  postUpdate: '2024-10-25 19:08:11'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="Blog/themes/butterfly/source/css/wy.css"><meta name="generator" content="Hexo 6.3.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/huoying.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">17</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">4</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首頁</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 時間軸</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 標籤</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 清單</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音樂</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 電影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友鏈</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/bj.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="wy"><span class="site-name">wy</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首頁</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 時間軸</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 標籤</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 清單</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音樂</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 電影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友鏈</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">无题</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-08-22T05:39:51.500Z" title="发表于 2024-08-22 13:39:51">2024-08-22</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-10-25T11:08:11.495Z" title="更新于 2024-10-25 19:08:11">2024-10-25</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">3.2k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>10分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="智能家居"><a href="#智能家居" class="headerlink" title="智能家居"></a>智能家居</h1><h2 id="MCU：stm32f103c8t6"><a href="#MCU：stm32f103c8t6" class="headerlink" title="MCU：stm32f103c8t6"></a><strong>MCU：stm32f103c8t6</strong></h2><p>项目在keil上进行移植创建开发</p>
+<p>项目包含对<strong>下位机</strong>（<strong>MCU对外设数据读取与控制</strong>）和<strong>上位机</strong>（<strong>包含服务平台和APP端</strong>）的设计。下位机选取STM32作为MCU，外设有<strong>LED灯</strong>和<strong>温度传感器</strong>，OLED屏。上位机则选用<strong>中国移动旗下的OneNet平台</strong>作为服务器，考虑到未来物联网的开发大多数是基于<strong>手机APP</strong>的。使用QT利用socket套接字绑定云平台IP和端口号制作。</p>
+<p><strong>下位机外设驱动</strong></p>
+<p><strong>ESP8266模块</strong>可以通过AT指令控制开发，总体开发速度快，难度较低</p>
+<p><strong>OLED模块</strong>使用IIC协议驱动显示</p>
+<p><strong>温度传感器</strong>采集温度信息</p>
+<p><strong>云平台使用</strong></p>
+<p><strong>选择多协议接入使用MQTT，既可以上传数据也可以下发数据控制</strong></p>
+<p><strong>创建的产品</strong></p>
+<p><strong>注意设备ID，鉴权信息以及接入方式这3个属性</strong></p>
+<p>问题：</p>
+<p>esp8266连接热点时存在问题</p>
+<p><img src="/2024/08/22/%E7%A7%8B%E6%8B%9B%E9%9D%A2%E8%AF%95/image-20240828151237216.png" alt="image-20240828151237216"></p>
+<h2 id="外设：0-96寸OLED，ESP8266，LED-温度传感器"><a href="#外设：0-96寸OLED，ESP8266，LED-温度传感器" class="headerlink" title="外设：0.96寸OLED，ESP8266，LED,温度传感器"></a><strong>外设：0.96寸OLED，ESP8266，LED,温度传感器</strong></h2><p> ESP8266部分的代码主要是借助<strong>串口通讯AT指令</strong>与<strong>ESP8266模块</strong>（<strong>刷入AT固件的</strong>）与<strong>OneNet平台</strong>进行信息交互（<strong>包含ESP8266初始化、数据发送，指令发送和数据缓存清除等</strong>）将模块配置为仅作为客户端模式，即Station模式‌</p>
+<p>1初始化DS18B20</p>
+<p>2对DS18B20读数据</p>
+<p>3对DS18B20写数据</p>
+<p><img src="/2024/08/22/%E7%A7%8B%E6%8B%9B%E9%9D%A2%E8%AF%95/image-20240822141451779.png" alt="image-20240822141451779"></p>
+<h2 id="MQTT"><a href="#MQTT" class="headerlink" title="MQTT"></a><strong>MQTT</strong></h2><p>（<strong>Message Queuing Telemetry Transport</strong>，<strong>消息队列遥测传输协议</strong>），是一种基于<strong>发布</strong>&#x2F;<strong>订阅</strong>（<strong>publish&#x2F;subscribe</strong>）模式的“<strong>轻量级</strong>”通讯协议（<strong>因此MQTT常用于物联网开发中的低功耗长期在线通讯</strong>），该协议构建于TCP&#x2F;IP协议上。</p>
+<p>实现MQTT协议需要客户端和服务器端通讯完成，在通讯过程中，MQTT协议中有三种身份：发布者（Publish）、代理（Broker）（服务器）、订阅者（Subscribe）。其中，消息的发布者和订阅者都是客户端，消息代理是服务器，消息发布者可以同时是订阅者。</p>
+<p>MQTT传输的消息分为：主题（Topic）和负载（payload）两部分：</p>
+<p>（1）Topic，可以理解为消息的类型，订阅者订阅（Subscribe）后，就会收到该主题的消息内容（payload）；<br>（2）payload，可以理解为消息的内容，是指订阅者具体要使用的内容。</p>
+<p>在MQTT协议中，一个MQTT数据包由：固定头（Fixed header）、可变头（Variable header）、消息体（payload）三部分构成。MQTT数据包结构如下：</p>
+<ul>
+<li>（1）固定头（Fixed header）。存在于所有MQTT数据包中，表示数据包类型及数据包的分组类标识。</li>
+<li>（2）可变头（Variable header）。存在于部分MQTT数据包中，数据包类型决定了可变头是否存在及其具体内容。</li>
+<li>（3）消息体（Payload）。存在于部分MQTT数据包中，表示客户端收到的具体内容。</li>
+</ul>
+<h1 id="PC性能监测"><a href="#PC性能监测" class="headerlink" title="PC性能监测"></a>PC性能监测</h1><p>vscode开发</p>
+<p>启动文件和链接脚本</p>
+<p>makefile</p>
+<p>难点，问题：</p>
+<p>接收上位机数据：ringbuffer</p>
+<p>解包：码头，功能码，数据位，数据，效验码，码尾；</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line">int main(void)</span><br><span class="line">&#123;</span><br><span class="line">	eeprom_init();//flash初始化</span><br><span class="line"></span><br><span class="line">	oled_init();</span><br><span class="line">	DMA1_channel7_Init();//DMA配置初始化</span><br><span class="line">	MX_GPIO_Init();</span><br><span class="line">	rt_thread_mdelay(500);</span><br><span class="line">	MX_USB_DEVICE_Init();//ringbuffer</span><br><span class="line"></span><br><span class="line">	led_init();</span><br><span class="line"></span><br><span class="line">	data_decode_init();//循环接收数据帧</span><br><span class="line"></span><br><span class="line">	oled_show_init();//logo显示，选择模式进行相应显示</span><br><span class="line"></span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br><span class="line">//格式化屏幕，划分logo</span><br><span class="line">extern struct rt_mutex mutex_oled_lock;</span><br><span class="line">rt_thread_init(&amp;gui_thread, //gui线程初始化</span><br><span class="line">                   &quot;gui&quot;,</span><br><span class="line">                   gui_entry,</span><br><span class="line">                   RT_NULL,</span><br><span class="line">                   &amp;gui_thread_stack[0],</span><br><span class="line">                   sizeof(gui_thread_stack),</span><br><span class="line">                   1,</span><br><span class="line">                   20);</span><br><span class="line">    rt_thread_startup(&amp;gui_thread);</span><br><span class="line">&#125;</span><br><span class="line">//oled数据显示</span><br><span class="line">struct rt_semaphore sem_oled_dma_TxCplt;</span><br><span class="line">struct rt_mutex mutex_oled_lock;</span><br><span class="line">rt_thread_init(&amp;oled_send_thread, //OLED线程初始化</span><br><span class="line">                           &quot;oled_spi&quot;,</span><br><span class="line">                           oled_send_entry,</span><br><span class="line">                           RT_NULL,</span><br><span class="line">                           &amp;oled_send_thread_stack[0],</span><br><span class="line">                           sizeof(oled_send_thread_stack),</span><br><span class="line">                           2,</span><br><span class="line">                           20);</span><br><span class="line">//解包                         </span><br><span class="line">struct rt_semaphore sem_usb_rx;</span><br><span class="line">rt_thread_init(&amp;data_decode_thread,</span><br><span class="line">                         &quot;decode&quot;,</span><br><span class="line">                         data_decode_entry,</span><br><span class="line">                         RT_NULL,</span><br><span class="line">                         &amp;data_decode_thread_stack[0],</span><br><span class="line">                         sizeof(data_decode_thread_stack),</span><br><span class="line">                         3,</span><br><span class="line">                         20);</span><br><span class="line">//切换模式</span><br><span class="line">rt_thread_init(&amp;oled_draw_thread,</span><br><span class="line">                         &quot;oled_draw&quot;,</span><br><span class="line">                         oled_draw_entry,</span><br><span class="line">                         RT_NULL,</span><br><span class="line">                         &amp;oled_draw_thread_stack[0],</span><br><span class="line">                         sizeof(oled_draw_thread_stack),</span><br><span class="line">                         4,</span><br><span class="line">                         20);</span><br><span class="line">rt_thread_init(&amp;led_breath_thread,</span><br><span class="line">                         &quot;led&quot;,</span><br><span class="line">                         led_breath_entry,</span><br><span class="line">                         RT_NULL,</span><br><span class="line">                         &amp;led_breath_thread_stack[0],</span><br><span class="line">                         sizeof(led_breath_thread_stack),</span><br><span class="line">                         5,</span><br><span class="line">                         20);</span><br></pre></td></tr></table></figure>
+
+<h2 id="操作系统（RTOS）"><a href="#操作系统（RTOS）" class="headerlink" title="操作系统（RTOS）"></a>操作系统（RTOS）</h2><p>进程线程：通信</p>
+<p>信号量，互斥锁</p>
+<h1 id="LINUX卡片电脑"><a href="#LINUX卡片电脑" class="headerlink" title="LINUX卡片电脑"></a>LINUX卡片电脑</h1><p>遇到问题：编译驱动（.ko）时，在开发板上运行时报错        无法创建IIC设备</p>
+<p>解决：Linux版本不对。    查看启动内核打印信息，看到在解析子节点时没成功，缺少时钟频率；</p>
+<p>平台-设备-驱动总线模式</p>
+<h3 id="IIC驱动OLED"><a href="#IIC驱动OLED" class="headerlink" title="IIC驱动OLED"></a>IIC驱动OLED</h3><p>:i2c_transfer函数里的主体是什么？回答的是msg，其实应该是adapter和msg；</p>
+<p><img src="/2024/08/22/%E7%A7%8B%E6%8B%9B%E9%9D%A2%E8%AF%95/134703ry9qy2e343z3mfj0.jpg" alt="img"></p>
+<h3 id="移植系统：uboot-kernel-rootfs"><a href="#移植系统：uboot-kernel-rootfs" class="headerlink" title="移植系统：uboot,kernel,rootfs"></a>移植系统：uboot,kernel,rootfs</h3><p><img src="/2024/08/22/%E7%A7%8B%E6%8B%9B%E9%9D%A2%E8%AF%95/image-20240823161757060.png" alt="image-20240823161757060"></p>
+<p><code>bootargs</code> 是启动参数（Boot Arguments）的缩写，用于在 Linux 系统启动时向内核传递一系列的配置选项</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">console=ttyS0,115200n8 root=/dev/mmcblk0p2 rw rootfstype=ext4 rootwait</span><br></pre></td></tr></table></figure>
+
+<p><code>bootcmd</code>是U-Boot（一个开源的引导加载程序，广泛用于嵌入式系统的启动）中的一个环境变量，它定义了系统启动时自动执行的命令。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">setenv bootcmd &#x27;mmc dev 1; fatload mmc 1:1 80800000 zImage; fatload mmc 1:1 83000000 imx6ull-alientek-emmc.dtb; bootz 80800000 - 83000000;&#x27;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Framebuffer"><a href="#Framebuffer" class="headerlink" title="Framebuffer"></a>Framebuffer</h3><p>Frame 是帧的意思，buffer 是缓冲的意思，这意味着Framebuffer 就是一块内存，里面保存着一帧图像。Framebuffer 中保存着一帧图像的每一个像素颜色值</p>
+<p>fb 是一种机制，将系统中所有跟显示有关的硬件以及软件集合起来，虚拟出一个 fb 设备，当我们编写好 LCD 驱动以后会生成一个名为&#x2F;dev&#x2F;fbX(X&#x3D;0~n)的设备，应用程序通过访问&#x2F;dev&#x2F;fbX 这个设备就可以访问 LCD</p>
+<h1 id="实习"><a href="#实习" class="headerlink" title="实习"></a>实习</h1><h2 id="TBOX"><a href="#TBOX" class="headerlink" title="TBOX"></a>TBOX</h2><p>DV - Design Verification 设计验证</p>
+<p>DUT - Device Under Testing 被测单元</p>
+<p>负载 - TODO</p>
+<p>上位机软件 - TODO</p>
+<p>OPENCPU 一般为 modem 集成模组，主要负责运营商相关业务，GPS 定位，以太网，WiFi模组控制等功能。</p>
+<p>具体检测内容由具体项目硬件方案确定</p>
+<p>上位机通信测试时，上位机通过 CAN 设备连接 DUT 的 CAN 接口，CAN 接口分为数据 CAN接口和通信 CAN 接口，其中：</p>
+<p>⚫ 数据 CAN 以 100ms 周期向上位机上报 TBox 的相关信息，内容为各测试项的检测状态或检测结果。</p>
+<p>⚫ 通信 CAN 以 100ms 周期向上位机上报固定报文，具体报文参照通信协议。</p>
+<h3 id="WIFI功能"><a href="#WIFI功能" class="headerlink" title="WIFI功能"></a>WIFI功能</h3><p>检测 WiFi 模块是否工作正常。</p>
+<p>DUT 的 WiFi 工作在 STA 模式下，主动连接负载的热点，并进行数据通信，若能成功通信则认为 WiFi 模块功能正常，将结果按照协议上报。</p>
+<p>试验时要求 AP 的 IP 地址为 192.168.10.100，连接热点的 SSID 由 DUT 的配置文件指定，PWD固定为 64840808，DUT 连接 wifi 热点成功后，通过 ping 命令进行通信检测网络通路。</p>
+<p>连接不上 wifi、获取不到 IP 超过 5 次或 ping 失败 30 次认为失败，重启 WiFi 模块重新检测。检测失败时，RSSI 也上报错误，不再保持之前的值。</p>
+<h3 id="GPS功能"><a href="#GPS功能" class="headerlink" title="GPS功能"></a>GPS功能</h3><p>DUT 定时检测 GPS 模块回传数据。正常工作时，GPS 模块初始化后每秒回传一次模块数据，若超过 5 秒未收到模块数据，则认为模块通信异常</p>
+<h3 id="USB功能"><a href="#USB功能" class="headerlink" title="USB功能"></a>USB功能</h3><p>DUT 作为从机，负载作为主机，DUT 主动 ping 通负载验证能否正常通信。ping 通即认为通路正常，连续 5 次 ping 通失败则认为通路异常，将检测结果按照通信协议上报。其中 DUT的 IP 地址固定为 2.2.2.2，负载的 IP 地址固定为 2.2.2.3。</p>
+<h1 id="CAN"><a href="#CAN" class="headerlink" title="CAN"></a>CAN</h1><p><strong>数据帧：</strong>大多数情况下使用的报文结构<br>从标识符长度上,又可以把数据帧分为标准帧 (11 位标识符 ) 和扩展帧 (29 位标识符 ) 。<br>数据帧由 7 个不同的位场组成:帧起始、仲裁场、控制场、数据场、 CRC 场、应答场、帧结束。</p>
+<p><strong>远程帧：用来向某一个节点请求数据</strong></p>
+<p><strong>错误帧：任何单元，一旦检测到总线错误就发出错误帧</strong></p>
+<p><strong>过载帧</strong>：用于先行和后续的数据帧或者远程帧之间<strong>提供附加延时</strong>，保证接收端能够来得及处理前面收到的数据，包括过载标志和过载界定符．</p>
+<h1 id="问题："><a href="#问题：" class="headerlink" title="问题："></a>问题：</h1><p>内存泄漏：</p>
+<p>ringbuffer写入比读出快</p>
+<p>器件功耗，精度问题</p>
+<p>项目难点，解决</p>
+<p>连接热点问题，项目开始选型阶段驱动模块太多（温度，湿度，光传感器，红外，压力，声音，摄像头），芯片资源不够，项目完成后对整个系统的优化，选用更高精度的器件，在设计电路板的时候加入抗干扰元器件，在软件设计方面少用延时函数，全局变量，考虑一些功耗问题。是否使用操作系统</p>
+<h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>我实习所在的部门是汽车电子产品事业部，部门所做的产品是车载T-BOX，即远程信息处理控制单元，是车联网重要部分，T-BOX产品也有很多种类，上面主要包括MCU，OPENCPU，有些还有AP，组里面有负责MCU的，有做BSP的，我所在的小组做的是OPEN部分的各模块功能的验证工作，OPENCPU是移远的集成模组。主要负责运营商相关业务，GPS 定位，WiFi，SIM卡等模组功能</p>
+<p>所做的验证工作就是按照恒润设计文档的要求，验证各个功能模块是否能够按照要求正常工作</p>
+<p>检测 WiFi 模块是否工作正常。</p>
+<p>DUT 的 WiFi 工作在 STA 模式下，主动连接负载的热点，并进行数据通信，若能成功通信则认为 WiFi 模块功能正常，将结果按照协议上报。连接不上 wifi、获取不到 IP 超过 5 次或 ping 失败 30 次认为失败，重启 WiFi 模块重新检测。检测失败时，上报错误。</p>
+<p>检测 GPS模块是否工作正常。</p>
+<p>DUT 定时检测 GPS 模块回传数据。正常工作时，GPS 模块初始化后每秒回传一次模块数据，若超过 5 秒未收到模块数据，则认为模块通信异常。</p>
+<p>这些都可以通过查看上位机收到的报文进行判断。然后因为是实习生（5个），也没有分配进入具体的项目，所做的比较多的工作就是被安排去对T-BOX开发板刷写固件，进入板端，写入一些相关信息并且读取一些相关信息进行记录。有时候可能还对开发板进行一个固件升级。最后就是自己对于公司代码架构，开发流程的一个自我学习（程序是怎样一步一步去调用实现的）。在实习期间，也在他们的车厂生产车间和外派出差过。（T-BOX产品需要进行测试实验（高温，低温，EMC电性能，EOL），T-BOX产品国标认证）</p>
+<p><strong>一</strong></p>
+<p>项目包含对下位机（MCU对外设数据读取与控制，连接云平台），上位机（手机APP）QT简易制作，云端（云服务平台接收下位机数据并下发命令）的设计。主要实现下位机，上位机，云的一个互通。</p>
+<p>下位机选取STM32作为MCU，外设有<strong>LED灯</strong>和<strong>温度传感器</strong>，OLED屏。云平台则选用<strong>中国移动旗下的OneNet平台</strong>作为服务器，考虑到<strong>手机APP</strong>的更方便直接操作。使用QT利用socket套接字绑定云平台IP和端口号制作。</p>
+<p>下位机外设驱动，<strong>ESP8266模块</strong>可以通过AT指令控制开发，总体开发速度快，难度较低，<strong>OLED模块</strong>使用IIC协议驱动显示，<strong>温度传感器</strong>采集温度信息</p>
+<p><strong>云平台使用</strong>，<strong>选择多协议接入使用MQTT，既可以上传数据也可以下发数据控制</strong>，<strong>创建的产品</strong>，注意设备ID，鉴权信息以及接入方式这3个属性</p>
+<p>整个项目在keil上进行移植开发，主要学习一些简单的外设驱动，和了解一些通信协议，掌握嵌入式开发的基本知识</p>
+<p><strong>二</strong></p>
+<p>一个显示 PC 运行状态监测的站台，通过上位机将 PC 端的 CPU 温度、CPU 占用率、内存占用率、GPU 温度和实时网速等信息采集后下发到模块，模块通过 OLED 将其显示出来。</p>
+<p>上位机是一个带有串口收发功能的开源上位机（hardware monitor），下位机即开发板，自己设计打板（c8t6，OLED（spi）,LED,USB,引出下载调试引脚）</p>
+<p>整个项目在vscode上进行开发，运行rt-thread操作系统，</p>
+<p>主要学习了解一些实时操作系统的相关知识，包括进程线程，系统调度，程序运行的一个流程。包括启动文件，链接脚本，makefile,ringbuffer接收数据，数据包解包，码头，功能码，数据长度，数据，效验码，码尾，多少个线程，线程优先级，信号量，互斥锁</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://1wy1.github.io">小巷子</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://1wy1.github.io/2024/08/22/%E7%A7%8B%E6%8B%9B%E9%9D%A2%E8%AF%95/">https://1wy1.github.io/2024/08/22/%E7%A7%8B%E6%8B%9B%E9%9D%A2%E8%AF%95/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://1wy1.github.io" target="_blank">wy</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="/img/huoying.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2024/07/17/%E7%BB%8F%E7%BA%AC%E6%81%92%E6%B6%A6%E5%AE%9E%E4%B9%A0-TBOX/" title="TBOX--DV（设计验证）"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">TBOX--DV（设计验证）</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/huoying.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">小巷子</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">17</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">4</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/1wy1/1wy1.github.io"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">QQ：491000643 <br> 内容可能有误，请谅解</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%99%BA%E8%83%BD%E5%AE%B6%E5%B1%85"><span class="toc-text">智能家居</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#MCU%EF%BC%9Astm32f103c8t6"><span class="toc-text">MCU：stm32f103c8t6</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%96%E8%AE%BE%EF%BC%9A0-96%E5%AF%B8OLED%EF%BC%8CESP8266%EF%BC%8CLED-%E6%B8%A9%E5%BA%A6%E4%BC%A0%E6%84%9F%E5%99%A8"><span class="toc-text">外设：0.96寸OLED，ESP8266，LED,温度传感器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MQTT"><span class="toc-text">MQTT</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#PC%E6%80%A7%E8%83%BD%E7%9B%91%E6%B5%8B"><span class="toc-text">PC性能监测</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%EF%BC%88RTOS%EF%BC%89"><span class="toc-text">操作系统（RTOS）</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#LINUX%E5%8D%A1%E7%89%87%E7%94%B5%E8%84%91"><span class="toc-text">LINUX卡片电脑</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#IIC%E9%A9%B1%E5%8A%A8OLED"><span class="toc-text">IIC驱动OLED</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A7%BB%E6%A4%8D%E7%B3%BB%E7%BB%9F%EF%BC%9Auboot-kernel-rootfs"><span class="toc-text">移植系统：uboot,kernel,rootfs</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Framebuffer"><span class="toc-text">Framebuffer</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%9E%E4%B9%A0"><span class="toc-text">实习</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#TBOX"><span class="toc-text">TBOX</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#WIFI%E5%8A%9F%E8%83%BD"><span class="toc-text">WIFI功能</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#GPS%E5%8A%9F%E8%83%BD"><span class="toc-text">GPS功能</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#USB%E5%8A%9F%E8%83%BD"><span class="toc-text">USB功能</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#CAN"><span class="toc-text">CAN</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%97%AE%E9%A2%98%EF%BC%9A"><span class="toc-text">问题：</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D"><span class="toc-text">介绍</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/08/22/%E7%A7%8B%E6%8B%9B%E9%9D%A2%E8%AF%95/" title="无题">无题</a><time datetime="2024-08-22T05:39:51.500Z" title="发表于 2024-08-22 13:39:51">2024-08-22</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/07/17/%E7%BB%8F%E7%BA%AC%E6%81%92%E6%B6%A6%E5%AE%9E%E4%B9%A0-TBOX/" title="TBOX--DV（设计验证）">TBOX--DV（设计验证）</a><time datetime="2024-07-17T06:28:23.000Z" title="发表于 2024-07-17 14:28:23">2024-07-17</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/03/20/linux%E5%8D%A1%E7%89%87%E7%94%B5%E8%84%91/" title="linux卡片电脑">linux卡片电脑</a><time datetime="2024-03-20T06:46:24.000Z" title="发表于 2024-03-20 14:46:24">2024-03-20</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/01/27/%E9%80%9A%E4%BF%A1/" title="通信">通信</a><time datetime="2024-01-27T02:54:42.000Z" title="发表于 2024-01-27 10:54:42">2024-01-27</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/01/04/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" title="编程基础知识">编程基础知识</a><time datetime="2024-01-04T02:07:26.000Z" title="发表于 2024-01-04 10:07:26">2024-01-04</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2023 - 2024 By 小巷子</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"></div><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/fireworks.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-nest.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
